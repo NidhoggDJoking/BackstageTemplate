@@ -178,7 +178,7 @@ export const constantRoutes = [{
             name: 'joking',
             component: () =>
                 import ('@/views/joking/index'),
-            meta: { title: '测试', icon: 'form' }
+            meta: { title: '测试', icon: 'link' }
         }]
     },
 
