@@ -19,30 +19,3 @@ $sideBarWidth: 210px;
     subMenuHover: $subMenuHover;
     sideBarWidth: $sideBarWidth;
 }
-
-
-/*滑道*/
-
-::-webkit-scrollbar-track {
-    border-radius: 25px;
-    background-color: #fff;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
-}
-
-
-/*滑动条*/
-
-::-webkit-scrollbar {
-    width: 6px;
-    background-color: #ffffff;
-}
-
-
-/*滑块*/
-
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    // background-color: #38fbe7;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background: linear-gradient(to bottom, #4aff52, #0fffc4, #00d0ff);
-}

@@ -1,9 +1,10 @@
 import Mock from 'mockjs'
-
+// items 为测试数据数量
 const data = Mock.mock({
-    'items|30': [{
+    'items|10': [{
         id: '@id',
-        title: '@sentence(10, 20)',
+        title: '@sentence(5, 10)',
+        'button|1': ['success', 'warning', 'info', 'error'],
         'status|1': ['published', 'draft', 'deleted'],
         author: 'name',
         display_time: '@datetime',
