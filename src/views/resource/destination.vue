@@ -1,49 +1,59 @@
 <template>
-  <div class="app-container">
-    <el-form ref="form" :model="form" label-width="120px">
-      <el-form-item label="活动名称">
-        <el-input v-model="form.name"></el-input>
-      </el-form-item>
-      <el-form-item label="活动区域">
-        <el-select v-model="form.region" placeholder="请选择活动区域">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
+  <div class="destination">
+    <div class="search">
+      <div class="inline-block">
+        <span class="demonstration">输入框:</span>
+        <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
+      </div>
+            <div class="inline-block">
+        <span class="demonstration">输入框:</span>
+        <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
+      </div>
+            <div class="inline-block">
+        <span class="demonstration">输入框:</span>
+        <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
+      </div>
+      <div class="inline-block">
+        <span class="demonstration">选择框:</span>
+        <el-select v-model="value" placeholder="请选择">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
         </el-select>
-      </el-form-item>
-      <el-form-item label="活动时间">
-        <el-col :span="11">
-          <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
-        </el-col>
-        <el-col class="line" :span="2">-</el-col>
-        <el-col :span="11">
-          <el-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
-        </el-col>
-      </el-form-item>
-      <el-form-item label="即时配送">
-        <el-switch v-model="form.delivery"></el-switch>
-      </el-form-item>
-      <el-form-item label="活动性质">
-        <el-checkbox-group v-model="form.type">
-          <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-          <el-checkbox label="地推活动" name="type"></el-checkbox>
-          <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-          <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
+      </div>
+      <div class="inline-block">
+        <span class="demonstration">创建时间:</span>
+        <el-date-picker
+          v-model="value1"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+        ></el-date-picker>
+      </div>
+      <div class="inline-block">
+        <span class="demonstration">状态:</span>
+        <el-checkbox-group v-model="checkList" class="inline-block">
+          <el-checkbox label="复选框 A"></el-checkbox>
+          <el-checkbox label="复选框 B"></el-checkbox>
+          <el-checkbox label="复选框 C"></el-checkbox>
+          <el-checkbox label="禁用" disabled></el-checkbox>
+          <el-checkbox label="选中且禁用" disabled></el-checkbox>
         </el-checkbox-group>
-      </el-form-item>
-      <el-form-item label="特殊资源">
-        <el-radio-group v-model="form.resource">
-          <el-radio label="线上品牌商赞助"></el-radio>
-          <el-radio label="线下场地免费"></el-radio>
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item label="活动形式">
-        <el-input type="textarea" v-model="form.desc"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button>取消</el-button>
-      </el-form-item>
-    </el-form>
+      </div>
+         <div class="inline-block">
+        <span class="demonstration">状态2:</span>
+<el-radio v-model="radio" label="1">备选项</el-radio>
+  <el-radio v-model="radio" label="2">备选项</el-radio>
+      </div>
+      <div class="inline-block" style="margin-left:10px">
+        <el-button type="primary" size="small">搜索</el-button>
+        <el-button size="small">重置</el-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -51,33 +61,58 @@
 export default {
   data() {
     return {
-      activeIndex: "1",
-      activeIndex2: "1",
-      form: {
-        name: "",
-        region: "",
-        date1: "",
-        date2: "",
-        delivery: false,
-        type: [],
-        resource: "",
-        desc: ""
-      }
+      options: [
+        {
+          value: "选项1",
+          label: "黄金糕"
+        },
+        {
+          value: "选项2",
+          label: "双皮奶"
+        },
+        {
+          value: "选项3",
+          label: "蚵仔煎"
+        },
+        {
+          value: "选项4",
+          label: "龙须面"
+        },
+        {
+          value: "选项5",
+          label: "北京烤鸭"
+        }
+      ],
+      value: "",
+      value1: "",
+      input: "",
+      checkList: ['选中且禁用','复选框 A'],
+      radio: '1'
     };
-  },
-  methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    onSubmit() {
-      console.log("submit!");
-    }
   }
 };
 </script>
 
 <style scoped>
-.line{
-  text-align: center;
+.destination {
+  background-color: #fafafa;
+  height: calc(100vh - 50px);
+}
+.search {
+  background-color: #fff;
+  /* height: 100px; */
+  width: 100%;
+  margin-top: 10px;
+  padding-bottom:5px;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+.demonstration {
+  font-size: 14px;
+  color: rgba(45, 45, 45, 45.85);
+  margin: 0 10px;
+}
+.inline-block{
+  padding: 5px 0;
+  /* min-height: 45px; */
 }
 </style>
