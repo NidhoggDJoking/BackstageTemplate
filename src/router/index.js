@@ -8,37 +8,27 @@ import Layout from '@/layout'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
+ * *注意:子菜单只在路由子菜单时出现。长度> = 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
- *
+ * !详情见     :https://panjiachen.github.io/vue-element- admin-site/guide/essentials/rouand nav.html
  * hidden: true                   if set true, item will not show in the sidebar(default is false)
+ * *隐藏:true如果设置为true，项目将不会显示在侧栏中(默认为false)
  * alwaysShow: true               if set true, will always show the root menu
+ * ?alwaysShow:true               如果设置为true，将始终显示根菜单
  *                                if not set alwaysShow, when item has more than one children route,
+ * *如果不设置alwaysShow，当项目有多个子路由时，
  *                                it will becomes nested mode, otherwise not show the root menu
+ * !它将成为嵌套模式，否则不显示根菜单
  * redirect: noRedirect           if set noRedirect will no redirect in the breadcrumb
- * name:'router-name'             the name is used by <keep-alive> (must set!!!)
+ * ?重定向:noRedirect如果设置noRedirect将不会在面包屑重定向
+ * name:'router-name'             这个名字被<keep-alive>(必须设置!!)
  * meta : {
-    roles: ['admin','editor']    control the page roles (you can set multiple roles)
-    title: 'title'               the name show in sidebar and breadcrumb (recommend set)
-    icon: 'svg-name'             the icon show in the sidebar
-    breadcrumb: false            if set false, the item will hidden in breadcrumb(default is true)
-    activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
+    roles: ['admin','editor']    控制页面角色(可以设置多个角色)
+    title: 'title'               侧栏和breadcrumb中显示的名称(推荐集)
+    icon: 'svg-name'             图标显示在侧栏
+    breadcrumb: false            则该项将隐藏在breadcrumb中(默认为true)
+    activeMenu: '/example/list'  如果设置了路径，侧边栏将突出显示您设置的路径
   }
-
-  *注意:子菜单只在路由子菜单时出现。长度> = 1
-*详情见:https://panjiachen.github.io/vue-element- admin-site/guide/essentials/rouand nav.html
-*隐藏:true如果设置为true，项目将不会显示在侧栏中(默认为false)
-* alwaysShow: true如果设置为true，将始终显示根菜单
-*如果不设置alwaysShow，当项目有多个子路由时，
-*它将成为嵌套模式，否则不显示根菜单
-*重定向:noRedirect如果设置noRedirect将不会在面包屑重定向
-* name:'router-name'这个名字被<keep-alive>(必须设置!!)
-* meta: {
-角色:['admin'，'editor']控制页面角色(可以设置多个角色)
-title: 'title'侧栏和breadcrumb中显示的名称(推荐集)
-图标:'svg-name'图标显示在侧栏
-如果设置为false，则该项将隐藏在breadcrumb中(默认为true)
-activeMenu: '/example/list'如果设置了路径，侧边栏将突出显示您设置的路径
-}
  */
 
 /**
@@ -52,7 +42,6 @@ export const constantRoutes = [{
             import ('@/views/login/index'),
         hidden: true
     },
-
     {
         path: '/404',
         component: () =>
