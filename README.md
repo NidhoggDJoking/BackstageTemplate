@@ -1,3 +1,11 @@
+### 日志
+
+```
+npm install less less-loader --save-dev
+安装了less预编译
+原来它自身安装了Sass
+```
+
 ### 目录结构
 
 ```
@@ -34,7 +42,17 @@
 ├── postcss.config.js          # postcss 配置
 └── package.json               # package.json
 ```
-
+#### 全局样式
+```
+├── styles
+│   ├── btn.scss                 # 按钮样式
+│   ├── element-ui.scss          # 全局自定义 element-ui 样式
+│   ├── index.scss               # 全局通用样式
+│   ├── mixin.scss               # 全局mixin
+│   ├── sidebar.scss             # sidebar css
+│   ├── transition.scss          # vue transition 动画
+│   └── variables.scss           # 全局变量
+```
 ### 页面详情
 
 ```
@@ -110,6 +128,8 @@
 ### 个人 
 
 ```
+此项目基于element UI
+
 左边菜单 在router/index.js里配置
 
 mock里是测试数据 包括用户信息和表单表格里的数据
@@ -119,3 +139,4 @@ layout/components 是通用的
 Navbar 是头部
 
 ```
+
