@@ -1,11 +1,3 @@
-左边菜单 在router/index.js里配置
-
-mock里是测试数据 包括用户信息和表单表格里的数据
-
-layout/components 是通用的
-
-Navbar 是头部
-
 ### 目录结构
 
 ```
@@ -112,5 +104,18 @@ Navbar 是头部
 │        ├── operatingParameter        # 运行参数
 │        ├── messagerie                # 站内消息
          └── applicationManagement     # 应用管理
+
+```
+
+### 个人 
+
+```
+左边菜单 在router/index.js里配置
+
+mock里是测试数据 包括用户信息和表单表格里的数据
+
+layout/components 是通用的
+
+Navbar 是头部
 
 ```
