@@ -145,6 +145,12 @@ ElementUI v2.7.2 => v2.13.0
 
 注意：属性名必须以VUE_APP_开头，比如VUE_APP_XXX
 
+# 打包正式环境
+ npm run build:prod
+
+# 打包预发布环境
+ npm run build:stage
+
 ```
 
 ### 个人 
