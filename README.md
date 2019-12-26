@@ -2,8 +2,15 @@
 
 ```
 npm install less less-loader --save-dev
+
 安装了less预编译
-原来它自身安装了Sass
+
+它自身原来也支持是Sass
+
+ElementUI v2.7.2 => v2.13.0
+
+.env.development
+
 ```
 
 ### 目录结构
@@ -86,7 +93,7 @@ npm install less less-loader --save-dev
 │   ├── hotel                          # 民宿酒店
 │   │    ├── hotelManagement           # 酒店管理
 │   │    ├── roomManagement            # 房型管理
-│   │    ├── hotelOrderManagement           # 订单管理
+│   │    ├── hotelOrderManagement      # 订单管理
 │   │    └── bookingManagement         # 预约管理
 │   ├── specialty                      # 特色产品
 │   │    ├── specialtyShops            # 特产店铺
@@ -122,6 +129,21 @@ npm install less less-loader --save-dev
 │        ├── operatingParameter        # 运行参数
 │        ├── messagerie                # 站内消息
          └── applicationManagement     # 应用管理
+
+```
+### 关于环境
+
+```
+
+不要乱起名，也无需专门手动控制加载哪个文件
+
+.env 全局默认配置文件，不论什么环境都会加载合并
+
+.env.development 开发环境下的配置文件
+
+.env.production  生产环境下的配置文件
+
+注意：属性名必须以VUE_APP_开头，比如VUE_APP_XXX
 
 ```
 
