@@ -243,4 +243,7 @@ export default {
 .editor-upload-btn {
   display: inline-block;
 }
+.tinymce-container >>> span.mce-flow-layout-item.mce-last{
+  display: none;
+}
 </style>
