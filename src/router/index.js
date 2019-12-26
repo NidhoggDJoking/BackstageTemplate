@@ -184,10 +184,10 @@ export const constantRoutes = [{
                 meta: { title: '门票管理', icon: 'user' }
             },
             {
-                path: 'orderManagement',
-                name: 'orderManagement',
+                path: 'scenicOrderManagement',
+                name: 'scenicOrderManagement',
                 component: () =>
-                    import ('@/views/scenic/orderManagement'),
+                    import ('@/views/scenic/scenicOrderManagement'),
                 meta: { title: '订单管理', icon: 'tree' }
             },
             {
@@ -210,7 +210,7 @@ export const constantRoutes = [{
         path: '/itinerary',
         component: Layout,
         redirect: '/itinerary/agencyManagement',
-        name: 'commercial',
+        name: 'itinerary',
         meta: { title: '旅行路线', icon: 'line' },
         children: [{
                 path: 'agencyManagement',
@@ -263,15 +263,15 @@ export const constantRoutes = [{
                 meta: { title: '房型管理', icon: 'tree' }
             },
             {
-                path: 'orderManagement',
-                name: 'orderManagement',
+                path: 'hotelOrderManagement',
+                name: 'hotelOrderManagement',
                 component: () =>
-                    import ('@/views/hotel/orderManagement'),
+                    import ('@/views/hotel/hotelOrderManagement'),
                 meta: { title: '订单管理', icon: 'tree' }
             },
             {
-                path: 'travelBooking',
-                name: 'travelBooking',
+                path: 'bookingManagement',
+                name: 'bookingManagement',
                 component: () =>
                     import ('@/views/hotel/bookingManagement'),
                 meta: { title: '预约管理', icon: 'tree' }
@@ -299,10 +299,10 @@ export const constantRoutes = [{
                 meta: { title: '特产商品', icon: 'tree' }
             },
             {
-                path: 'orderManagement',
-                name: 'orderManagement',
+                path: 'specialtyOrderManagement',
+                name: 'specialtyOrderManagement',
                 component: () =>
-                    import ('@/views/specialty/orderManagement'),
+                    import ('@/views/specialty/specialtyOrderManagement'),
                 meta: { title: '订单管理', icon: 'tree' }
             },
         ]
@@ -380,17 +380,17 @@ export const constantRoutes = [{
         name: 'merchantBill',
         meta: { title: '商户账单', icon: 'bill' },
         children: [{
-                path: 'specialtyShops',
-                name: 'specialtyShops',
+                path: 'flowRecord',
+                name: 'flowRecord',
                 component: () =>
-                    import ('@/views/merchantBill/specialtyShops'),
+                    import ('@/views/merchantBill/flowRecord'),
                 meta: { title: '流水记录', icon: 'table' }
             },
             {
-                path: 'localProducts',
-                name: 'localProducts',
+                path: 'billingRecords',
+                name: 'billingRecords',
                 component: () =>
-                    import ('@/views/merchantBill/localProducts'),
+                    import ('@/views/merchantBill/billingRecords'),
                 meta: { title: '账单记录', icon: 'tree' }
             },
         ]
