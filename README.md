@@ -75,7 +75,7 @@ npm install less less-loader --save-dev
 │   ├── scenic                         # 旅游景点
 │   │    ├── scenicManagement          # 景点管理
 │   │    ├── ticketManagement          # 门票管理
-│   │    ├── orderManagement           # 订单管理
+│   │    ├── scenicOrderManagement     # 订单管理
 │   │    ├── ticketStock               # 门票存量
 │   │    └── liveStreaming             # 景区直播
 │   ├── itinerary                      # 旅行路线
@@ -86,12 +86,12 @@ npm install less less-loader --save-dev
 │   ├── hotel                          # 民宿酒店
 │   │    ├── hotelManagement           # 酒店管理
 │   │    ├── roomManagement            # 房型管理
-│   │    ├── orderManagement           # 订单管理
+│   │    ├── hotelOrderManagement           # 订单管理
 │   │    └── bookingManagement         # 预约管理
 │   ├── specialty                      # 特色产品
 │   │    ├── specialtyShops            # 特产店铺
 │   │    ├── localProducts             # 特产商品
-│   │    └── orderManagement           # 订单管理
+│   │    └── specialtyOrderManagement  # 订单管理
 │   ├── restaurant                     # 餐馆美食
 │   │    ├── restaurantManagement      # 饭店管理
 │   │    └── foodProducts              # 美食产品
@@ -102,8 +102,8 @@ npm install less less-loader --save-dev
 │   │    ├── leasingCompany            # 租赁公司
 │   │    └── LeaseGoods                # 租赁商品
 │   ├── merchantBill                   # 商户账单
-│   │    ├── specialtyShops            # 流水记录
-│   │    └── localProducts             # 账单记录
+│   │    ├── flowRecord                # 流水记录
+│   │    └── billingRecords            # 账单记录
 │   ├── customization                  # 旅行定制
 │   │    └── customOrder               # 定制订单
 │   ├── website                        # 网站内容
