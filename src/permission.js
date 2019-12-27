@@ -31,9 +31,12 @@ router.beforeEach(async(to, from, next) => {
                 next()
             } else {
                 try {
-                    // get user info
-                    await store.dispatch('user/getInfo')
+                    // 用户类型
+                    const { roles } = await store.dispatch('user/getInfo')
 
+                    const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
+                        // 需要使用权限限制时修改generateRoutes方法同时打开下面的方法
+                        // router.addRoutes(accessRoutes)
                     next()
                 } catch (error) {
                     // 删除令牌，进入登录页面重新登录回到路径所在位置
@@ -48,10 +51,10 @@ router.beforeEach(async(to, from, next) => {
         /* has no token*/
 
         if (whiteList.indexOf(to.path) !== -1) {
-            // in the free login whitelist, go directly
+            // 在免费登录白名单，直接去
             next()
         } else {
-            // other pages that do not have permission to access are redirected to the login page.
+            // 没有访问权限的其他页面被重定向到登录页面。
             next(`/login?redirect=${to.path}`)
             NProgress.done()
         }

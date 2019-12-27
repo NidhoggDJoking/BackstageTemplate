@@ -6,6 +6,10 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  mounted(){
+    // console.log(this.routes);
+    // console.log(this.$routes);
+  }
 }
 </script>

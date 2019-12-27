@@ -5,9 +5,11 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <template v-if="device!=='mobile'">
       <search id="header-search" class="right-menu-item" />
       <screenfull id="screenfull" class="right-menu-item hover-effect" />
-      <el-dropdown class="avatar-container" trigger="click">
+          </template>
+      <el-dropdown class="avatar-container right-menu-item hover-effect el-dropdown" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
           <i class="el-icon-caret-bottom" />
@@ -50,7 +52,8 @@ export default {
   computed: {
     ...mapGetters([
       'sidebar',
-      'avatar'
+      'avatar',
+      'device'
     ])
   },
   methods: {
@@ -90,6 +93,11 @@ export default {
 
   .breadcrumb-container {
     float: left;
+  }
+
+  .errLog-container {
+    display: inline-block;
+    vertical-align: top;
   }
 
   .right-menu {

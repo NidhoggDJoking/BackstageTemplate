@@ -33,8 +33,12 @@ import Layout from '@/layout'
 
 /**
  * constantRoutes
- * a base page that does not have permission requirements
- * all roles can be accessed
+ * 没有权限要求的基本页
+ * 所有角色都可以访问
+ * 如果要权限限制要使用
+ * asyncRoutes
+ * 需要根据用户角色动态加载的路由
+ * 
  */
 export const constantRoutes = [{
         path: '/login',
@@ -524,7 +528,7 @@ export const constantRoutes = [{
             },
         ]
     },
-
+    // 多层嵌套
     // {
     //     path: '/nested',
     //     component: Layout,
@@ -586,19 +590,7 @@ export const constantRoutes = [{
     //         }
     //     ]
     // },
-
-    // {
-    //     path: '/joking',
-    //     component: Layout,
-    //     children: [{
-    //         path: 'index',
-    //         name: 'joking',
-    //         component: () =>
-    //             import ('@/views/joking/index'),
-    //         meta: { title: '测试', icon: 'link' }
-    //     }]
-    // },
-
+    // 外链
     // {
     //     path: 'external-link',
     //     component: Layout,
