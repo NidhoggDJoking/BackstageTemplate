@@ -81,7 +81,7 @@ const actions = {
                 removeToken()
                 resetRouter()
 
-                // reset visited views and cached views
+                // 重置已访问的视图和缓存的视图
                 // to fixed https://github.com/PanJiaChen/vue-element-admin/issues/2485
                 dispatch('tagsView/delAllViews', null, { root: true })
 

@@ -156,15 +156,17 @@ ElementUI v2.7.2 => v2.13.0
 ### 个人 
 
 ```
+Navbar 是头部
+
 此项目基于element UI
+
+layout/components 是通用的
 
 左边菜单 在router/index.js里配置
 
 mock里是测试数据 包括用户信息和表单表格里的数据
 
-layout/components 是通用的
-
-Navbar 是头部
+没采用权限限制的路由模式当然我还是做了两手准备找到根目录permission.js文件搜索权限限制
 
 ```
 
