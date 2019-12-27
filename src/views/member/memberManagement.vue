@@ -3,33 +3,26 @@
     <div class="nav-title">
       <span>会员表</span>
       <div class="btn">
-        <el-button type="primary" icon="el-icon-plus">添加</el-button>
+        <el-button type="primary" icon="el-icon-plus" @click="handleClick()">添加</el-button>
       </div>
     </div>
     <div class="table-list">
       <div class="search">
         <div class="inline-block">
-          <span class="demonstration">输入框:</span>
+          <span class="demonstration">昵称:</span>
           <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
         </div>
         <div class="inline-block">
-          <span class="demonstration">输入框:</span>
+          <span class="demonstration">姓名:</span>
           <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
         </div>
         <div class="inline-block">
-          <span class="demonstration">输入框:</span>
+          <span class="demonstration">证件号码:</span>
           <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
         </div>
         <div class="inline-block">
-          <span class="demonstration">选择框:</span>
-          <el-select v-model="value" placeholder="请选择">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
+          <span class="demonstration">手机号码:</span>
+          <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
         </div>
         <div class="inline-block">
           <span class="demonstration">创建时间:</span>
@@ -43,37 +36,37 @@
         </div>
         <div class="inline-block">
           <span class="demonstration">状态:</span>
-          <el-checkbox-group v-model="checkList" class="inline-block">
-            <el-checkbox label="复选框 A"></el-checkbox>
-            <el-checkbox label="复选框 B"></el-checkbox>
-            <el-checkbox label="复选框 C"></el-checkbox>
-            <el-checkbox label="禁用" disabled></el-checkbox>
-            <el-checkbox label="选中且禁用" disabled></el-checkbox>
-          </el-checkbox-group>
+          <el-radio v-model="radio" label="1">全部</el-radio>
+          <el-radio v-model="radio" label="2">有效</el-radio>
+          <el-radio v-model="radio" label="3">待审核</el-radio>
+          <el-radio v-model="radio" label="4">草稿</el-radio>
         </div>
         <div class="inline-block">
-          <span class="demonstration">状态2:</span>
-          <el-radio v-model="radio" label="1">备选项</el-radio>
-          <el-radio v-model="radio" label="2">备选项</el-radio>
+          <span class="demonstration">性别:</span>
+          <el-radio v-model="radio" label="1">全部</el-radio>
+          <el-radio v-model="radio" label="2">男</el-radio>
+          <el-radio v-model="radio" label="3">女</el-radio>
         </div>
         <div class="inline-block" style="margin-left:10px">
-          <el-button type="primary" size="small">搜索</el-button>
-          <el-button size="small">重置</el-button>
+          <el-button type="primary">搜索</el-button>
+          <el-button>重置</el-button>
         </div>
       </div>
-
+      <!-- 表格 -->
       <el-table :data="tableData" border style="width: 100%">
         <el-table-column prop="date" label="日期" width="180"></el-table-column>
         <el-table-column prop="name" label="姓名" width="180"></el-table-column>
         <el-table-column prop="address" label="地址"></el-table-column>
-        <el-table-column fixed="right" label="操作" width="100">
+        <el-table-column fixed="right" label="操作" width="200">
           <template slot-scope="scope">
-            <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-            <el-button type="text" size="small">编辑</el-button>
+            <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
+            <el-button type="text" size="small">删除</el-button>
+            <el-button type="text" size="small">冻结</el-button>
+            <el-button type="text" size="small">停用</el-button>
           </template>
         </el-table-column>
       </el-table>
-
+      <!-- 弹框 -->
       <el-dialog title="编辑会员表" :visible.sync="dialogFormVisible" top="30px">
         <el-form :model="form">
           <el-row>
@@ -83,53 +76,53 @@
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="名称" :label-width="formLabelWidth">
-                <el-input v-model="form.name" autocomplete="off"></el-input>
+              <el-form-item label="真实姓名" :label-width="formLabelWidth">
+                <el-input v-model="form.realName" autocomplete="off"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="12">
               <el-form-item label="手机号码" :label-width="formLabelWidth">
-                <el-input v-model="form.name" autocomplete="off"></el-input>
+                <el-input v-model="form.phone" autocomplete="off"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="12">
               <el-form-item label="电子邮箱" :label-width="formLabelWidth">
-                <el-input v-model="form.name" autocomplete="off"></el-input>
+                <el-input v-model="form.email" autocomplete="off"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="12">
               <el-form-item label="证件类型" :label-width="formLabelWidth">
-                <el-select v-model="form.region" placeholder="请选择证件类型">
-                  <el-option label="身份证" value="shanghai"></el-option>
-                  <el-option label="护照" value="shanghai"></el-option>
-                  <el-option label="港澳通行证" value="shanghai"></el-option>
-                  <el-option label="台湾通行证" value="shanghai"></el-option>
-                  <el-option label="回乡证" value="shanghai"></el-option>
-                  <el-option label="台胞证" value="beijing"></el-option>
+                <el-select v-model="form.type" placeholder="请选择证件类型">
+                  <el-option label="身份证" value="sfz"></el-option>
+                  <el-option label="护照" value="hz"></el-option>
+                  <el-option label="港澳通行证" value="ga"></el-option>
+                  <el-option label="台湾通行证" value="tw"></el-option>
+                  <el-option label="回乡证" value="hx"></el-option>
+                  <el-option label="台胞证" value="tb"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="12">
               <el-form-item label="证件号码" :label-width="formLabelWidth">
-                <el-input v-model="form.name" autocomplete="off"></el-input>
+                <el-input v-model="form.idCard" autocomplete="off"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="12">
               <el-form-item label="出生日期" :label-width="formLabelWidth">
-                <el-date-picker v-model="value1" type="date" placeholder="选择日期"></el-date-picker>
+                <el-date-picker v-model="form.birthday" type="date" placeholder="选择日期"></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="12">
               <el-form-item label="性别" :label-width="formLabelWidth">
-                <el-radio v-model="radio" label="1">男</el-radio>
-                <el-radio v-model="radio" label="2">女</el-radio>
-                <el-radio v-model="radio" label="3">未知</el-radio>
+                <el-radio v-model="form.sex" label="1">男</el-radio>
+                <el-radio v-model="form.sex" label="2">女</el-radio>
+                <el-radio v-model="form.sex" label="3">未知</el-radio>
               </el-form-item>
             </el-col>
           </el-row>
@@ -137,7 +130,7 @@
             <el-col :span="12">
               <el-form-item label="所在地区" :label-width="formLabelWidth">
                 <el-cascader
-                  v-model="value"
+                  v-model="form.region"
                   separator="-"
                   :options="options2"
                   :props="{ expandTrigger: 'hover' }"
@@ -147,7 +140,7 @@
             </el-col>
             <el-col :span="12">
               <el-form-item label="详细地址" :label-width="formLabelWidth">
-                <el-input v-model="form.name" autocomplete="off"></el-input>
+                <el-input v-model="form.site" autocomplete="off"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -168,10 +161,10 @@
             </el-col>
             <el-col :span="12">
               <el-form-item label="第三方平台" :label-width="formLabelWidth">
-                <el-select v-model="form.region" placeholder="请选择第三方平台">
-                  <el-option label="QQ" value="shanghai"></el-option>
-                  <el-option label="微信" value="shanghai"></el-option>
-                  <el-option label="其他" value="shanghai"></el-option>
+                <el-select v-model="form.thirdParty" placeholder="请选择第三方平台">
+                  <el-option label="QQ" value="qq"></el-option>
+                  <el-option label="微信" value="wx"></el-option>
+                  <el-option label="其他" value="qt"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
@@ -179,12 +172,12 @@
           <el-row>
             <el-col :span="12">
               <el-form-item label="第三方openid" :label-width="formLabelWidth">
-                <el-input v-model="form.name" autocomplete="off"></el-input>
+                <el-input v-model="form.openid" autocomplete="off"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="12">
               <el-form-item label="第三方昵称" :label-width="formLabelWidth">
-                <el-input v-model="form.name" autocomplete="off"></el-input>
+                <el-input v-model="form.nickName" autocomplete="off"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -192,7 +185,7 @@
             <el-input
               type="textarea"
               placeholder="请输入内容"
-              v-model="form.name"
+              v-model="form.remark"
               maxlength="130"
               show-word-limit
             ></el-input>
@@ -203,6 +196,15 @@
           <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
         </div>
       </el-dialog>
+    </div>
+    <!-- 分页 -->
+    <div class="el-pagination-container">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :page-count="pagerTotal"
+        @current-change="current_change"
+      ></el-pagination>
     </div>
   </div>
 </template>
@@ -513,90 +515,10 @@ export default {
           address: "上海市普陀区金沙江路 1518 弄"
         },
         {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
           date: "2016-05-01",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1519 弄"
         },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
       ],
       dialogFormVisible: false,
       form: {
@@ -611,7 +533,7 @@ export default {
         // 证件类型
         type: "",
         // 证件号码
-        idcard: "",
+        idCard: "",
         // 电子邮箱
         email: "",
         // 手机号码
@@ -632,7 +554,8 @@ export default {
         remark: ""
       },
       formLabelWidth: "120px",
-      imageUrl: ""
+      imageUrl: "",
+      pagerTotal: 10
     };
   },
   methods: {
@@ -644,6 +567,9 @@ export default {
     },
     handleAvatarSuccess(res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
+    },
+    current_change: function(currentPage) {
+      console.log(currentPage);
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg";
@@ -711,6 +637,12 @@ export default {
   text-align: center;
   font-weight: 400;
 }
+.el-dialog__wrapper @{deep}.el-dialog__header {
+  border-bottom: 1px solid #e6e6e6;
+}
+.el-dialog__wrapper @{deep}.el-dialog {
+  border-radius: 7px;
+}
 </style>
 <style>
 .avatar-uploader .el-upload {
@@ -736,4 +668,7 @@ export default {
   height: 120px;
   display: block;
 }
+/* .el-button+.el-button {
+    margin-left: 0px;
+} */
 </style>
