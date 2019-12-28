@@ -38,7 +38,7 @@ export default {
     };
   },
   created() {
-    this.provinceData = require("@/assets/ChinaCity.json");
+    this.provinceData = require("@/assets/area/ChinaCity.json");
   },
   methods: {
     chooseProvince(value) {
