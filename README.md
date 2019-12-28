@@ -29,7 +29,7 @@ npm install less less-loader --save-dev
 
 ElementUI v2.7.2 => v2.13.0
 
-.env.development
+utils/get-page-title.js 控制title内容
 
 ```
 
