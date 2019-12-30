@@ -47,7 +47,7 @@
         </el-table-column>
       </el-table>
       <!-- 弹框 -->
-      <el-dialog title="编辑会员表" :visible.sync="dialogFormVisible" top="30px">
+      <el-dialog title="编辑用户管理" :visible.sync="dialogFormVisible" top="30px">
         <el-form :model="form">
           <el-row>
             <el-col :span="12">
@@ -127,15 +127,33 @@
           <el-row>
             <el-col :span="12">
               <el-form-item label="头像" :label-width="formLabelWidth">
-                <el-upload
-                  class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload"
-                >
-                  <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                <el-upload action="#" list-type="picture-card" :auto-upload="false">
+                  <i slot="default" class="el-icon-plus"></i>
+                  <div slot="file" slot-scope="{file}">
+                    <img class="el-upload-list__item-thumbnail" :src="file.url" alt />
+                    <span class="el-upload-list__item-actions">
+                      <span
+                        class="el-upload-list__item-preview"
+                        @click="handlePictureCardPreview(file)"
+                      >
+                        <i class="el-icon-zoom-in"></i>
+                      </span>
+                      <span
+                        v-if="!disabled"
+                        class="el-upload-list__item-delete"
+                        @click="handleDownload(file)"
+                      >
+                        <i class="el-icon-download"></i>
+                      </span>
+                      <span
+                        v-if="!disabled"
+                        class="el-upload-list__item-delete"
+                        @click="handleRemove(file)"
+                      >
+                        <i class="el-icon-delete"></i>
+                      </span>
+                    </span>
+                  </div>
                 </el-upload>
               </el-form-item>
             </el-col>
@@ -186,6 +204,10 @@
         @current-change="current_change"
       ></el-pagination>
     </div>
+    <!-- 查看大图 -->
+    <el-dialog :visible.sync="dialogVisible">
+      <img width="100%" :src="dialogImageUrl" alt />
+    </el-dialog>
   </div>
 </template>
 
@@ -533,7 +555,10 @@ export default {
       },
       formLabelWidth: "120px",
       imageUrl: "",
-      pagerTotal: 10
+      pagerTotal: 10,
+      dialogImageUrl: "",
+      dialogVisible: false,
+      disabled: false
     };
   },
   methods: {
@@ -543,23 +568,18 @@ export default {
     handleChange(value) {
       console.log(value);
     },
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
     current_change: function(currentPage) {
       console.log(currentPage);
     },
-    beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg";
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
-      }
-      if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
-      }
-      return isJPG && isLt2M;
+    handleRemove(file) {
+      console.log(file);
+    },
+    handlePictureCardPreview(file) {
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+    },
+    handleDownload(file) {
+      console.log(file);
     }
   }
 };
@@ -616,7 +636,7 @@ export default {
   font-weight: 400;
 }
 .el-dialog__wrapper @{deep}.el-dialog__header {
-  border-bottom: 1px solid #e6e6e6;
+  // border-bottom: 1px solid #e6e6e6;
 }
 .el-dialog__wrapper @{deep}.el-dialog {
   border-radius: 7px;
