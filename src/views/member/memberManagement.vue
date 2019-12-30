@@ -10,24 +10,24 @@
       <div class="search">
         <div class="inline-block">
           <span class="demonstration">昵称:</span>
-          <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
+          <el-input placeholder="请输入内容" v-model="searchForm.nickName" clearable style="width:200px"></el-input>
         </div>
         <div class="inline-block">
           <span class="demonstration">姓名:</span>
-          <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
+          <el-input placeholder="请输入内容" v-model="searchForm.name" clearable style="width:200px"></el-input>
         </div>
         <div class="inline-block">
           <span class="demonstration">证件号码:</span>
-          <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
+          <el-input placeholder="请输入内容" v-model="searchForm.idCard" clearable style="width:200px"></el-input>
         </div>
         <div class="inline-block">
           <span class="demonstration">手机号码:</span>
-          <el-input placeholder="请输入内容" v-model="input" clearable style="width:200px"></el-input>
+          <el-input placeholder="请输入内容" v-model="searchForm.phone" clearable style="width:200px"></el-input>
         </div>
         <div class="inline-block">
           <span class="demonstration">创建时间:</span>
           <el-date-picker
-            v-model="value1"
+            v-model="searchForm.creationTime"
             type="daterange"
             range-separator="至"
             start-placeholder="开始日期"
@@ -36,20 +36,20 @@
         </div>
         <div class="inline-block">
           <span class="demonstration">状态:</span>
-          <el-radio v-model="radio" label="1">全部</el-radio>
-          <el-radio v-model="radio" label="2">有效</el-radio>
-          <el-radio v-model="radio" label="3">待审核</el-radio>
-          <el-radio v-model="radio" label="4">草稿</el-radio>
+          <el-radio v-model="searchForm.state" label="1">全部</el-radio>
+          <el-radio v-model="searchForm.state" label="2">有效</el-radio>
+          <el-radio v-model="searchForm.state" label="3">待审核</el-radio>
+          <el-radio v-model="searchForm.state" label="4">草稿</el-radio>
         </div>
-        <div class="inline-block">
+        <div class="inline-block" style="margin-left: 30px;">
           <span class="demonstration">性别:</span>
-          <el-radio v-model="radio" label="1">全部</el-radio>
-          <el-radio v-model="radio" label="2">男</el-radio>
-          <el-radio v-model="radio" label="3">女</el-radio>
+          <el-radio v-model="searchForm.sex" label="1">全部</el-radio>
+          <el-radio v-model="searchForm.sex" label="2">男</el-radio>
+          <el-radio v-model="searchForm.sex" label="3">女</el-radio>
         </div>
         <div class="inline-block" style="margin-left:10px">
-          <el-button type="primary">搜索</el-button>
-          <el-button>重置</el-button>
+          <el-button type="primary" @click="search">搜索</el-button>
+          <el-button @click="reset">重置</el-button>
         </div>
       </div>
       <!-- 表格 -->
@@ -131,9 +131,10 @@
               <el-form-item label="所在地区" :label-width="formLabelWidth">
                 <el-cascader
                   v-model="form.region"
-                  separator="-"
-                  :options="options2"
-                  :props="{ expandTrigger: 'hover' }"
+                  placeholder="请选择省市区"
+                  separator=">"
+                  :options="areaList"
+                  :props="{ expandTrigger: 'hover',value:'label' }"
                   @change="handleChange"
                 ></el-cascader>
               </el-form-item>
@@ -192,8 +193,8 @@
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+          <el-button @click="cancel">取 消</el-button>
+          <el-button type="primary" @click="submit">确 定</el-button>
         </div>
       </el-dialog>
     </div>
@@ -210,304 +211,16 @@
 </template>
 
 <script>
+import { getInfo } from "@/api/member/memberManagement";
+import { area } from "@/assets/area/area.js";
 export default {
+  mounted() {
+    this.areaList = area;
+  },
   data() {
     return {
-      options: [
-        {
-          value: "选项1",
-          label: "黄金糕"
-        },
-        {
-          value: "选项2",
-          label: "双皮奶"
-        },
-        {
-          value: "选项3",
-          label: "蚵仔煎"
-        },
-        {
-          value: "选项4",
-          label: "龙须面"
-        },
-        {
-          value: "选项5",
-          label: "北京烤鸭"
-        }
-      ],
-      options2: [
-        {
-          value: "zhinan",
-          label: "指南",
-          children: [
-            {
-              value: "shejiyuanze",
-              label: "设计原则",
-              children: [
-                {
-                  value: "yizhi",
-                  label: "一致"
-                },
-                {
-                  value: "fankui",
-                  label: "反馈"
-                },
-                {
-                  value: "xiaolv",
-                  label: "效率"
-                },
-                {
-                  value: "kekong",
-                  label: "可控"
-                }
-              ]
-            },
-            {
-              value: "daohang",
-              label: "导航",
-              children: [
-                {
-                  value: "cexiangdaohang",
-                  label: "侧向导航"
-                },
-                {
-                  value: "dingbudaohang",
-                  label: "顶部导航"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          value: "zujian",
-          label: "组件",
-          children: [
-            {
-              value: "basic",
-              label: "Basic",
-              children: [
-                {
-                  value: "layout",
-                  label: "Layout 布局"
-                },
-                {
-                  value: "color",
-                  label: "Color 色彩"
-                },
-                {
-                  value: "typography",
-                  label: "Typography 字体"
-                },
-                {
-                  value: "icon",
-                  label: "Icon 图标"
-                },
-                {
-                  value: "button",
-                  label: "Button 按钮"
-                }
-              ]
-            },
-            {
-              value: "form",
-              label: "Form",
-              children: [
-                {
-                  value: "radio",
-                  label: "Radio 单选框"
-                },
-                {
-                  value: "checkbox",
-                  label: "Checkbox 多选框"
-                },
-                {
-                  value: "input",
-                  label: "Input 输入框"
-                },
-                {
-                  value: "input-number",
-                  label: "InputNumber 计数器"
-                },
-                {
-                  value: "select",
-                  label: "Select 选择器"
-                },
-                {
-                  value: "cascader",
-                  label: "Cascader 级联选择器"
-                },
-                {
-                  value: "switch",
-                  label: "Switch 开关"
-                },
-                {
-                  value: "slider",
-                  label: "Slider 滑块"
-                },
-                {
-                  value: "time-picker",
-                  label: "TimePicker 时间选择器"
-                },
-                {
-                  value: "date-picker",
-                  label: "DatePicker 日期选择器"
-                },
-                {
-                  value: "datetime-picker",
-                  label: "DateTimePicker 日期时间选择器"
-                },
-                {
-                  value: "upload",
-                  label: "Upload 上传"
-                },
-                {
-                  value: "rate",
-                  label: "Rate 评分"
-                },
-                {
-                  value: "form",
-                  label: "Form 表单"
-                }
-              ]
-            },
-            {
-              value: "data",
-              label: "Data",
-              children: [
-                {
-                  value: "table",
-                  label: "Table 表格"
-                },
-                {
-                  value: "tag",
-                  label: "Tag 标签"
-                },
-                {
-                  value: "progress",
-                  label: "Progress 进度条"
-                },
-                {
-                  value: "tree",
-                  label: "Tree 树形控件"
-                },
-                {
-                  value: "pagination",
-                  label: "Pagination 分页"
-                },
-                {
-                  value: "badge",
-                  label: "Badge 标记"
-                }
-              ]
-            },
-            {
-              value: "notice",
-              label: "Notice",
-              children: [
-                {
-                  value: "alert",
-                  label: "Alert 警告"
-                },
-                {
-                  value: "loading",
-                  label: "Loading 加载"
-                },
-                {
-                  value: "message",
-                  label: "Message 消息提示"
-                },
-                {
-                  value: "message-box",
-                  label: "MessageBox 弹框"
-                },
-                {
-                  value: "notification",
-                  label: "Notification 通知"
-                }
-              ]
-            },
-            {
-              value: "navigation",
-              label: "Navigation",
-              children: [
-                {
-                  value: "menu",
-                  label: "NavMenu 导航菜单"
-                },
-                {
-                  value: "tabs",
-                  label: "Tabs 标签页"
-                },
-                {
-                  value: "breadcrumb",
-                  label: "Breadcrumb 面包屑"
-                },
-                {
-                  value: "dropdown",
-                  label: "Dropdown 下拉菜单"
-                },
-                {
-                  value: "steps",
-                  label: "Steps 步骤条"
-                }
-              ]
-            },
-            {
-              value: "others",
-              label: "Others",
-              children: [
-                {
-                  value: "dialog",
-                  label: "Dialog 对话框"
-                },
-                {
-                  value: "tooltip",
-                  label: "Tooltip 文字提示"
-                },
-                {
-                  value: "popover",
-                  label: "Popover 弹出框"
-                },
-                {
-                  value: "card",
-                  label: "Card 卡片"
-                },
-                {
-                  value: "carousel",
-                  label: "Carousel 走马灯"
-                },
-                {
-                  value: "collapse",
-                  label: "Collapse 折叠面板"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          value: "ziyuan",
-          label: "资源",
-          children: [
-            {
-              value: "axure",
-              label: "Axure Components"
-            },
-            {
-              value: "sketch",
-              label: "Sketch Templates"
-            },
-            {
-              value: "jiaohu",
-              label: "组件交互文档"
-            }
-          ]
-        }
-      ],
-      value: "",
-      value1: "",
-      input: "",
-      checkList: ["选中且禁用", "复选框 A"],
-      radio: "1",
+      // 地域数据
+      areaList: [],
       tableData: [
         {
           date: "2016-05-02",
@@ -518,9 +231,8 @@ export default {
           date: "2016-05-01",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1519 弄"
-        },
+        }
       ],
-      dialogFormVisible: false,
       form: {
         // 名称
         name: "",
@@ -553,30 +265,80 @@ export default {
         // 备注
         remark: ""
       },
+      // 搜索
+      searchForm: {
+        // 昵称
+        nickName: "",
+        // 名称
+        name: "",
+        // 证件号码
+        idCard: "",
+        // 手机号码
+        phone: "",
+        // 创建时间
+        creationTime: "",
+        // 性别
+        sex: "",
+        // 状态
+        state: ""
+      },
+      dialogFormVisible: false,
       formLabelWidth: "120px",
       imageUrl: "",
       pagerTotal: 10
     };
   },
   methods: {
+    // 重置按钮
+    reset() {
+      this.searchForm = {
+        nickName: "",
+        name: "",
+        idCard: "",
+        phone: "",
+        creationTime: "",
+        sex: "",
+        state: ""
+      };
+    },
+    // 搜索按钮
+    search() {
+      console.log(this.searchForm);
+    },
+    // 打开弹框
     handleClick() {
       this.dialogFormVisible = true;
     },
+    // 地区变化
     handleChange(value) {
       console.log(value);
+    },
+    // 弹框取消
+    cancel() {
+      this.dialogFormVisible = false;
+    },
+    // 弹框确定
+    submit() {
+      console.log(this.form);
+
+      this.dialogFormVisible = false;
     },
     handleAvatarSuccess(res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
     },
+    // 分页
     current_change: function(currentPage) {
       console.log(currentPage);
     },
     beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg";
+      const isJPG =
+        file.type === "image/jpeg" ||
+        file.type === "image/png" ||
+        file.type === "image/jpg";
       const isLt2M = file.size / 1024 / 1024 < 2;
 
       if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
+        this.$message.error("上传头像图片只能是 JPG,PNG,JPEG 格式!");
       }
       if (!isLt2M) {
         this.$message.error("上传头像图片大小不能超过 2MB!");
