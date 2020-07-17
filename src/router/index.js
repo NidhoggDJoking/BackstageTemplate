@@ -81,92 +81,92 @@ export const constantRoutes = [{
         }, ]
     },
 
-    {
-        path: '/resource',
-        component: Layout,
-        redirect: '/resource/destination',
-        name: 'resource',
-        meta: { title: '系统资源', icon: 'five' },
-        children: [{
-                path: 'destination',
-                name: 'destination',
-                component: () =>
-                    import ('@/views/resource/destination'),
-                meta: { title: '目的地', icon: 'eye' }
-            },
-            {
-                path: 'boutiqueLine',
-                name: 'boutiqueLine',
-                component: () =>
-                    import ('@/views/resource/boutiqueLine'),
-                meta: { title: '精品路线', icon: 'eye-open' }
-            },
-            {
-                path: 'culture',
-                name: 'culture',
-                component: () =>
-                    import ('@/views/resource/culture'),
-                meta: { title: '文化', icon: 'culture' }
-            },
-            {
-                path: 'strategy',
-                name: 'strategy',
-                component: () =>
-                    import ('@/views/resource/strategy'),
-                meta: { title: '攻略', icon: 'link' }
-            },
-            {
-                path: 'travelNotes',
-                name: 'travelNotes',
-                component: () =>
-                    import ('@/views/resource/travelNotes'),
-                meta: { title: '游记', icon: 'nested' }
-            },
-            {
-                path: 'information',
-                name: 'information',
-                component: () =>
-                    import ('@/views/resource/information'),
-                meta: { title: '资讯', icon: 'password' }
-            }
-        ]
-    },
-    {
-        path: '/commercial',
-        component: Layout,
-        redirect: '/commercial/commercialManagement',
-        name: 'commercial',
-        meta: { title: '供应商户', icon: 'example' },
-        children: [{
-                path: 'commercialManagement',
-                name: 'commercialManagement',
-                component: () =>
-                    import ('@/views/commercial/commercialManagement'),
-                meta: { title: '供应商管理' }
-            },
-            {
-                path: 'commercialUser',
-                name: 'commercialUser',
-                component: () =>
-                    import ('@/views/commercial/commercialUser'),
-                meta: { title: '供应商用户' }
-            },
-            {
-                path: 'commercialRole',
-                name: 'commercialRole',
-                component: () =>
-                    import ('@/views/commercial/commercialRole'),
-                meta: { title: '供应商角色' }
-            },
-            {
-                path: 'commercialPower',
-                name: 'commercialPower',
-                component: () =>
-                    import ('@/views/commercial/commercialPower'),
-                meta: { title: '供应商权限' }
-            },
-        ]
-    },
+    // {
+    //     path: '/resource',
+    //     component: Layout,
+    //     redirect: '/resource/destination',
+    //     name: 'resource',
+    //     meta: { title: '系统资源', icon: 'five' },
+    //     children: [{
+    //             path: 'destination',
+    //             name: 'destination',
+    //             component: () =>
+    //                 import ('@/views/resource/destination'),
+    //             meta: { title: '目的地', icon: 'eye' }
+    //         },
+    //         {
+    //             path: 'boutiqueLine',
+    //             name: 'boutiqueLine',
+    //             component: () =>
+    //                 import ('@/views/resource/boutiqueLine'),
+    //             meta: { title: '精品路线', icon: 'eye-open' }
+    //         },
+    //         {
+    //             path: 'culture',
+    //             name: 'culture',
+    //             component: () =>
+    //                 import ('@/views/resource/culture'),
+    //             meta: { title: '文化', icon: 'culture' }
+    //         },
+    //         {
+    //             path: 'strategy',
+    //             name: 'strategy',
+    //             component: () =>
+    //                 import ('@/views/resource/strategy'),
+    //             meta: { title: '攻略', icon: 'link' }
+    //         },
+    //         {
+    //             path: 'travelNotes',
+    //             name: 'travelNotes',
+    //             component: () =>
+    //                 import ('@/views/resource/travelNotes'),
+    //             meta: { title: '游记', icon: 'nested' }
+    //         },
+    //         {
+    //             path: 'information',
+    //             name: 'information',
+    //             component: () =>
+    //                 import ('@/views/resource/information'),
+    //             meta: { title: '资讯', icon: 'password' }
+    //         }
+    //     ]
+    // },
+    // {
+    //     path: '/commercial',
+    //     component: Layout,
+    //     redirect: '/commercial/commercialManagement',
+    //     name: 'commercial',
+    //     meta: { title: '供应商户', icon: 'example' },
+    //     children: [{
+    //             path: 'commercialManagement',
+    //             name: 'commercialManagement',
+    //             component: () =>
+    //                 import ('@/views/commercial/commercialManagement'),
+    //             meta: { title: '供应商管理' }
+    //         },
+    //         {
+    //             path: 'commercialUser',
+    //             name: 'commercialUser',
+    //             component: () =>
+    //                 import ('@/views/commercial/commercialUser'),
+    //             meta: { title: '供应商用户' }
+    //         },
+    //         {
+    //             path: 'commercialRole',
+    //             name: 'commercialRole',
+    //             component: () =>
+    //                 import ('@/views/commercial/commercialRole'),
+    //             meta: { title: '供应商角色' }
+    //         },
+    //         {
+    //             path: 'commercialPower',
+    //             name: 'commercialPower',
+    //             component: () =>
+    //                 import ('@/views/commercial/commercialPower'),
+    //             meta: { title: '供应商权限' }
+    //         },
+    //     ]
+    // },
     {
         path: '/scenic',
         component: Layout,
@@ -283,251 +283,279 @@ export const constantRoutes = [{
         ]
     },
     {
-        path: '/specialty',
+        path: '/live',
         component: Layout,
-        redirect: '/specialty/specialtyShops',
-        name: 'specialty',
-        meta: { title: '特色产品', icon: 'specialty' },
+        redirect: '/live/liveManagement',
+        name: 'live',
+        meta: { title: '直播', icon: 'tree' },
         children: [{
-                path: 'specialtyShops',
-                name: 'specialtyShops',
-                component: () =>
-                    import ('@/views/specialty/specialtyShops'),
-                meta: { title: '特产店铺', icon: 'table' }
-            },
-            {
-                path: 'localProducts',
-                name: 'localProducts',
-                component: () =>
-                    import ('@/views/specialty/localProducts'),
-                meta: { title: '特产商品', icon: 'tree' }
-            },
-            {
-                path: 'specialtyOrderManagement',
-                name: 'specialtyOrderManagement',
-                component: () =>
-                    import ('@/views/specialty/specialtyOrderManagement'),
-                meta: { title: '订单管理', icon: 'tree' }
-            },
-        ]
-    },
-    {
-        path: '/restaurant',
-        component: Layout,
-        redirect: '/restaurant/restaurantManagement',
-        name: 'restaurant',
-        meta: { title: '餐馆美食', icon: 'example' },
-        children: [{
-                path: 'restaurantManagement',
-                name: 'restaurantManagement',
-                component: () =>
-                    import ('@/views/restaurant/restaurantManagement'),
-                meta: { title: '饭店管理', icon: 'restaurant' }
-            },
-            {
-                path: 'foodProducts',
-                name: 'foodProducts',
-                component: () =>
-                    import ('@/views/restaurant/foodProducts'),
-                meta: { title: '美食产品', icon: 'tree' }
-            },
-        ]
-    },
-    {
-        path: '/entertainment',
-        component: Layout,
-        redirect: '/entertainment/entertainmentVenues',
-        name: 'entertainment',
-        meta: { title: '休闲娱乐', icon: 'entertainment' },
-        children: [{
-                path: 'entertainmentVenues',
-                name: 'entertainmentVenues',
-                component: () =>
-                    import ('@/views/entertainment/entertainmentVenues'),
-                meta: { title: '娱乐场所', icon: 'table' }
-            },
-            {
-                path: 'entertainmentProject',
-                name: 'entertainmentProject',
-                component: () =>
-                    import ('@/views/entertainment/entertainmentProject'),
-                meta: { title: '娱乐项目', icon: 'tree' }
-            },
-        ]
-    },
-    {
-        path: '/leasing',
-        component: Layout,
-        redirect: '/leasing/leasingCompany',
-        name: 'leasing',
-        meta: { title: '便民租车', icon: 'car' },
-        children: [{
-                path: 'leasingCompany',
-                name: 'leasingCompany',
-                component: () =>
-                    import ('@/views/leasing/leasingCompany'),
-                meta: { title: '租赁公司', icon: 'table' }
-            },
-            {
-                path: 'LeaseGoods',
-                name: 'LeaseGoods',
-                component: () =>
-                    import ('@/views/leasing/LeaseGoods'),
-                meta: { title: '租赁商品', icon: 'tree' }
-            },
-        ]
-    },
-    {
-        path: '/merchantBill',
-        component: Layout,
-        redirect: '/merchantBill/specialtyShops',
-        name: 'merchantBill',
-        meta: { title: '商户账单', icon: 'bill' },
-        children: [{
-                path: 'flowRecord',
-                name: 'flowRecord',
-                component: () =>
-                    import ('@/views/merchantBill/flowRecord'),
-                meta: { title: '流水记录', icon: 'table' }
-            },
-            {
-                path: 'billingRecords',
-                name: 'billingRecords',
-                component: () =>
-                    import ('@/views/merchantBill/billingRecords'),
-                meta: { title: '账单记录', icon: 'tree' }
-            },
-        ]
-    },
-    {
-        path: '/customization',
-        component: Layout,
-        redirect: '/customization/customOrder',
-        name: 'customization',
-        meta: { title: '旅行定制', icon: 'example' },
-        children: [{
-            path: 'customOrder',
-            name: 'customOrder',
+            path: 'liveManagement',
+            name: 'liveManagement',
             component: () =>
-                import ('@/views/customization/customOrder'),
-            meta: { title: '定制订单', icon: 'table' }
-        }]
+                import ('@/views/live/liveManagement'),
+            meta: { title: '直播管理', icon: 'restaurant' }
+        }, ]
     },
     {
-        path: '/website',
+        path: '/data',
         component: Layout,
-        redirect: '/website/pageContent',
-        name: 'website',
-        meta: { title: '网站内容', icon: 'web' },
+        redirect: '/data/dataStatistics',
+        name: 'data',
+        meta: { title: '数据统计', icon: 'bill' },
         children: [{
-                path: 'pageContent',
-                name: 'pageContent',
-                component: () =>
-                    import ('@/views/website/pageContent'),
-                meta: { title: '页面内容', icon: 'table' }
-            },
-            {
-                path: 'photoManagement',
-                name: 'photoManagement',
-                component: () =>
-                    import ('@/views/website/photoManagement'),
-                meta: { title: '相册管理', icon: 'tree' }
-            },
-        ]
+            path: 'dataStatistics',
+            name: 'dataStatistics',
+            component: () =>
+                import ('@/views/data/dataStatistics'),
+            meta: { title: '数据统计', icon: 'bill' }
+        }, ]
     },
-    {
-        path: '/personalCenter',
-        component: Layout,
-        redirect: '/personalCenter/myMessage',
-        name: 'personalCenter',
-        meta: { title: '个人中心', icon: 'user' },
-        children: [{
-                path: 'myMessage',
-                name: 'myMessage',
-                component: () =>
-                    import ('@/views/personalCenter/myMessage'),
-                meta: { title: '我的消息', icon: 'table' }
-            },
-            {
-                path: 'changeInformation',
-                name: 'changeInformation',
-                component: () =>
-                    import ('@/views/personalCenter/changeInformation'),
-                meta: { title: '修改信息', icon: 'tree' }
-            },
-            {
-                path: 'changePassword',
-                name: 'changePassword',
-                component: () =>
-                    import ('@/views/personalCenter/changePassword'),
-                meta: { title: '修改密码', icon: 'tree' }
-            },
-        ]
-    },
-    {
-        path: '/systemManagement',
-        component: Layout,
-        redirect: '/systemManagement/userManagement',
-        name: 'systemManagement',
-        meta: { title: '系统管理', icon: 'systemManagement' },
-        children: [{
-                path: 'userManagement',
-                name: 'userManagement',
-                component: () =>
-                    import ('@/views/systemManagement/userManagement'),
-                meta: { title: '用户管理', icon: 'table' }
-            },
-            {
-                path: 'rightsGroup',
-                name: 'rightsGroup',
-                component: () =>
-                    import ('@/views/systemManagement/rightsGroup'),
-                meta: { title: '权限分组', icon: 'tree' }
-            },
-            {
-                path: 'institutionalFramework',
-                name: 'institutionalFramework',
-                component: () =>
-                    import ('@/views/systemManagement/institutionalFramework'),
-                meta: { title: '组织机构', icon: 'tree' }
-            },
-            {
-                path: 'functionModule',
-                name: 'functionModule',
-                component: () =>
-                    import ('@/views/systemManagement/functionModule'),
-                meta: { title: '功能模块', icon: 'tree' }
-            },
-            {
-                path: 'dataDictionary',
-                name: 'dataDictionary',
-                component: () =>
-                    import ('@/views/systemManagement/dataDictionary'),
-                meta: { title: '数据字典', icon: 'tree' }
-            },
-            {
-                path: 'operatingParameter',
-                name: 'operatingParameter',
-                component: () =>
-                    import ('@/views/systemManagement/operatingParameter'),
-                meta: { title: '运行参数', icon: 'tree' }
-            },
-            {
-                path: 'messagerie',
-                name: 'messagerie',
-                component: () =>
-                    import ('@/views/systemManagement/messagerie'),
-                meta: { title: '站内消息', icon: 'tree' }
-            },
-            {
-                path: 'applicationManagement',
-                name: 'applicationManagement',
-                component: () =>
-                    import ('@/views/systemManagement/applicationManagement'),
-                meta: { title: '应用管理', icon: 'tree' }
-            },
-        ]
-    },
+    // {
+    //     path: '/specialty',
+    //     component: Layout,
+    //     redirect: '/specialty/specialtyShops',
+    //     name: 'specialty',
+    //     meta: { title: '特色产品', icon: 'specialty' },
+    //     children: [{
+    //             path: 'specialtyShops',
+    //             name: 'specialtyShops',
+    //             component: () =>
+    //                 import ('@/views/specialty/specialtyShops'),
+    //             meta: { title: '特产店铺', icon: 'table' }
+    //         },
+    //         {
+    //             path: 'localProducts',
+    //             name: 'localProducts',
+    //             component: () =>
+    //                 import ('@/views/specialty/localProducts'),
+    //             meta: { title: '特产商品', icon: 'tree' }
+    //         },
+    //         {
+    //             path: 'specialtyOrderManagement',
+    //             name: 'specialtyOrderManagement',
+    //             component: () =>
+    //                 import ('@/views/specialty/specialtyOrderManagement'),
+    //             meta: { title: '订单管理', icon: 'tree' }
+    //         },
+    //     ]
+    // },
+    // {
+    //     path: '/restaurant',
+    //     component: Layout,
+    //     redirect: '/restaurant/restaurantManagement',
+    //     name: 'restaurant',
+    //     meta: { title: '餐馆美食', icon: 'example' },
+    //     children: [{
+    //             path: 'restaurantManagement',
+    //             name: 'restaurantManagement',
+    //             component: () =>
+    //                 import ('@/views/restaurant/restaurantManagement'),
+    //             meta: { title: '饭店管理', icon: 'restaurant' }
+    //         },
+    //         {
+    //             path: 'foodProducts',
+    //             name: 'foodProducts',
+    //             component: () =>
+    //                 import ('@/views/restaurant/foodProducts'),
+    //             meta: { title: '美食产品', icon: 'tree' }
+    //         },
+    //     ]
+    // },
+    // {
+    //     path: '/entertainment',
+    //     component: Layout,
+    //     redirect: '/entertainment/entertainmentVenues',
+    //     name: 'entertainment',
+    //     meta: { title: '休闲娱乐', icon: 'entertainment' },
+    //     children: [{
+    //             path: 'entertainmentVenues',
+    //             name: 'entertainmentVenues',
+    //             component: () =>
+    //                 import ('@/views/entertainment/entertainmentVenues'),
+    //             meta: { title: '娱乐场所', icon: 'table' }
+    //         },
+    //         {
+    //             path: 'entertainmentProject',
+    //             name: 'entertainmentProject',
+    //             component: () =>
+    //                 import ('@/views/entertainment/entertainmentProject'),
+    //             meta: { title: '娱乐项目', icon: 'tree' }
+    //         },
+    //     ]
+    // },
+    // {
+    //     path: '/leasing',
+    //     component: Layout,
+    //     redirect: '/leasing/leasingCompany',
+    //     name: 'leasing',
+    //     meta: { title: '便民租车', icon: 'car' },
+    //     children: [{
+    //             path: 'leasingCompany',
+    //             name: 'leasingCompany',
+    //             component: () =>
+    //                 import ('@/views/leasing/leasingCompany'),
+    //             meta: { title: '租赁公司', icon: 'table' }
+    //         },
+    //         {
+    //             path: 'LeaseGoods',
+    //             name: 'LeaseGoods',
+    //             component: () =>
+    //                 import ('@/views/leasing/LeaseGoods'),
+    //             meta: { title: '租赁商品', icon: 'tree' }
+    //         },
+    //     ]
+    // },
+    // {
+    //     path: '/merchantBill',
+    //     component: Layout,
+    //     redirect: '/merchantBill/specialtyShops',
+    //     name: 'merchantBill',
+    //     meta: { title: '商户账单', icon: 'bill' },
+    //     children: [{
+    //             path: 'flowRecord',
+    //             name: 'flowRecord',
+    //             component: () =>
+    //                 import ('@/views/merchantBill/flowRecord'),
+    //             meta: { title: '流水记录', icon: 'table' }
+    //         },
+    //         {
+    //             path: 'billingRecords',
+    //             name: 'billingRecords',
+    //             component: () =>
+    //                 import ('@/views/merchantBill/billingRecords'),
+    //             meta: { title: '账单记录', icon: 'tree' }
+    //         },
+    //     ]
+    // },
+    // {
+    //     path: '/customization',
+    //     component: Layout,
+    //     redirect: '/customization/customOrder',
+    //     name: 'customization',
+    //     meta: { title: '旅行定制', icon: 'example' },
+    //     children: [{
+    //         path: 'customOrder',
+    //         name: 'customOrder',
+    //         component: () =>
+    //             import ('@/views/customization/customOrder'),
+    //         meta: { title: '定制订单', icon: 'table' }
+    //     }]
+    // },
+    // {
+    //     path: '/website',
+    //     component: Layout,
+    //     redirect: '/website/pageContent',
+    //     name: 'website',
+    //     meta: { title: '网站内容', icon: 'web' },
+    //     children: [{
+    //             path: 'pageContent',
+    //             name: 'pageContent',
+    //             component: () =>
+    //                 import ('@/views/website/pageContent'),
+    //             meta: { title: '页面内容', icon: 'table' }
+    //         },
+    //         {
+    //             path: 'photoManagement',
+    //             name: 'photoManagement',
+    //             component: () =>
+    //                 import ('@/views/website/photoManagement'),
+    //             meta: { title: '相册管理', icon: 'tree' }
+    //         },
+    //     ]
+    // },
+    // {
+    //     path: '/personalCenter',
+    //     component: Layout,
+    //     redirect: '/personalCenter/myMessage',
+    //     name: 'personalCenter',
+    //     meta: { title: '个人中心', icon: 'user' },
+    //     children: [{
+    //             path: 'myMessage',
+    //             name: 'myMessage',
+    //             component: () =>
+    //                 import ('@/views/personalCenter/myMessage'),
+    //             meta: { title: '我的消息', icon: 'table' }
+    //         },
+    //         {
+    //             path: 'changeInformation',
+    //             name: 'changeInformation',
+    //             component: () =>
+    //                 import ('@/views/personalCenter/changeInformation'),
+    //             meta: { title: '修改信息', icon: 'tree' }
+    //         },
+    //         {
+    //             path: 'changePassword',
+    //             name: 'changePassword',
+    //             component: () =>
+    //                 import ('@/views/personalCenter/changePassword'),
+    //             meta: { title: '修改密码', icon: 'tree' }
+    //         },
+    //     ]
+    // },
+    // {
+    //     path: '/systemManagement',
+    //     component: Layout,
+    //     redirect: '/systemManagement/userManagement',
+    //     name: 'systemManagement',
+    //     meta: { title: '系统管理', icon: 'systemManagement' },
+    //     children: [{
+    //             path: 'userManagement',
+    //             name: 'userManagement',
+    //             component: () =>
+    //                 import ('@/views/systemManagement/userManagement'),
+    //             meta: { title: '用户管理', icon: 'table' }
+    //         },
+    //         {
+    //             path: 'rightsGroup',
+    //             name: 'rightsGroup',
+    //             component: () =>
+    //                 import ('@/views/systemManagement/rightsGroup'),
+    //             meta: { title: '权限分组', icon: 'tree' }
+    //         },
+    //         {
+    //             path: 'institutionalFramework',
+    //             name: 'institutionalFramework',
+    //             component: () =>
+    //                 import ('@/views/systemManagement/institutionalFramework'),
+    //             meta: { title: '组织机构', icon: 'tree' }
+    //         },
+    //         {
+    //             path: 'functionModule',
+    //             name: 'functionModule',
+    //             component: () =>
+    //                 import ('@/views/systemManagement/functionModule'),
+    //             meta: { title: '功能模块', icon: 'tree' }
+    //         },
+    //         {
+    //             path: 'dataDictionary',
+    //             name: 'dataDictionary',
+    //             component: () =>
+    //                 import ('@/views/systemManagement/dataDictionary'),
+    //             meta: { title: '数据字典', icon: 'tree' }
+    //         },
+    //         {
+    //             path: 'operatingParameter',
+    //             name: 'operatingParameter',
+    //             component: () =>
+    //                 import ('@/views/systemManagement/operatingParameter'),
+    //             meta: { title: '运行参数', icon: 'tree' }
+    //         },
+    //         {
+    //             path: 'messagerie',
+    //             name: 'messagerie',
+    //             component: () =>
+    //                 import ('@/views/systemManagement/messagerie'),
+    //             meta: { title: '站内消息', icon: 'tree' }
+    //         },
+    //         {
+    //             path: 'applicationManagement',
+    //             name: 'applicationManagement',
+    //             component: () =>
+    //                 import ('@/views/systemManagement/applicationManagement'),
+    //             meta: { title: '应用管理', icon: 'tree' }
+    //         },
+    //     ]
+    // },
     // 多层嵌套
     // {
     //     path: '/nested',
