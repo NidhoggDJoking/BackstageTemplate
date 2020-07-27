@@ -83,7 +83,58 @@ utils/get-page-title.js 控制title内容
 │   ├── transition.scss          # vue transition 动画
 │   └── variables.scss           # 全局变量
 ```
-### 页面详情
+
+### 关于环境
+
+```
+
+不要乱起名，也无需专门手动控制加载哪个文件
+
+.env 全局默认配置文件，不论什么环境都会加载合并
+
+.env.development 开发环境下的配置文件
+
+.env.production  生产环境下的配置文件
+
+注意：属性名必须以VUE_APP_开头，比如VUE_APP_XXX
+
+# 打包正式环境
+ npm run build:prod
+
+# 打包预发布环境
+ npm run build:stage
+
+```
+
+### 个人 
+
+```
+Navbar 是头部
+
+此项目基于element UI
+
+layout/components 是通用的
+
+左边菜单 在router/index.js里配置
+
+mock里是测试数据 包括用户信息和表单表格里的数据
+
+没采用权限限制的路由模式当然我还是做了两手准备找到根目录permission.js文件搜索权限限制
+
+el-table 表头隐藏 :show-header="false"
+
+el-table在列中设置sortable属性即可实现以该列为基准的排序，接受一个Boolean，默认为false。
+可以通过 Table 的default-sort属性设置默认的排序列和排序顺序。
+可以使用sort-method或者sort-by使用自定义的排序规则。
+如果需要后端排序，需将sortable设置为custom，同时在 Table 上监听sort-change事件，
+在事件回调中可以获取当前排序的字段名和排序顺序，从而向接口请求排序后的表格数据。
+在本例中，我们还使用了formatter属性，它用于格式化指定列的值，接受一个Function，
+会传入两个参数：row和column，可以根据自己的需求进行处理
+
+```
+
+
+### 页面详情 OUT
 
 ```
 ─── view                               # 页面
@@ -154,52 +205,3 @@ utils/get-page-title.js 控制title内容
          └── applicationManagement     # 应用管理
 
 ```
-### 关于环境
-
-```
-
-不要乱起名，也无需专门手动控制加载哪个文件
-
-.env 全局默认配置文件，不论什么环境都会加载合并
-
-.env.development 开发环境下的配置文件
-
-.env.production  生产环境下的配置文件
-
-注意：属性名必须以VUE_APP_开头，比如VUE_APP_XXX
-
-# 打包正式环境
- npm run build:prod
-
-# 打包预发布环境
- npm run build:stage
-
-```
-
-### 个人 
-
-```
-Navbar 是头部
-
-此项目基于element UI
-
-layout/components 是通用的
-
-左边菜单 在router/index.js里配置
-
-mock里是测试数据 包括用户信息和表单表格里的数据
-
-没采用权限限制的路由模式当然我还是做了两手准备找到根目录permission.js文件搜索权限限制
-
-el-table 表头隐藏 :show-header="false"
-
-el-table在列中设置sortable属性即可实现以该列为基准的排序，接受一个Boolean，默认为false。
-可以通过 Table 的default-sort属性设置默认的排序列和排序顺序。
-可以使用sort-method或者sort-by使用自定义的排序规则。
-如果需要后端排序，需将sortable设置为custom，同时在 Table 上监听sort-change事件，
-在事件回调中可以获取当前排序的字段名和排序顺序，从而向接口请求排序后的表格数据。
-在本例中，我们还使用了formatter属性，它用于格式化指定列的值，接受一个Function，
-会传入两个参数：row和column，可以根据自己的需求进行处理
-
-```
-
