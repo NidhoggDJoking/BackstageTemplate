@@ -45,8 +45,7 @@ export const constantRoutes = [{
         component: () =>
             import ('@/views/login/index'),
         hidden: true
-    },
-    {
+    }, {
         path: '/404',
         component: () =>
             import ('@/views/404'),
@@ -62,7 +61,10 @@ export const constantRoutes = [{
             name: 'index',
             component: () =>
                 import ('@/views/index'),
-            meta: { title: '首页', icon: 'dashboard' }
+            meta: {
+                title: '首页',
+                icon: 'dashboard'
+            }
         }]
     },
 
@@ -71,13 +73,19 @@ export const constantRoutes = [{
         component: Layout,
         redirect: '/member/memberManagement',
         name: 'member',
-        meta: { title: '会员信息', icon: 'example' },
+        meta: {
+            title: '会员信息',
+            icon: 'example'
+        },
         children: [{
             path: 'memberManagement',
             name: 'memberManagement',
             component: () =>
                 import ('@/views/member/memberManagement'),
-            meta: { title: '会员管理', icon: 'form' }
+            meta: {
+                title: '会员管理',
+                icon: 'form'
+            }
         }, ]
     },
 
@@ -172,142 +180,185 @@ export const constantRoutes = [{
         component: Layout,
         redirect: '/scenic/scenicManagement',
         name: 'scenic',
-        meta: { title: '旅游景点', icon: 'scenic' },
+        meta: {
+            title: '旅游景点',
+            icon: 'scenic'
+        },
         children: [{
-                path: 'scenicManagement',
-                name: 'scenicManagement',
-                component: () =>
-                    import ('@/views/scenic/scenicManagement'),
-                meta: { title: '景点管理', icon: 'table' }
-            },
-            {
-                path: 'ticketManagement',
-                name: 'ticketManagement',
-                component: () =>
-                    import ('@/views/scenic/ticketManagement'),
-                meta: { title: '门票管理', icon: 'user' }
-            },
-            {
-                path: 'scenicOrderManagement',
-                name: 'scenicOrderManagement',
-                component: () =>
-                    import ('@/views/scenic/scenicOrderManagement'),
-                meta: { title: '订单管理', icon: 'tree' }
-            },
-            {
-                path: 'ticketStock',
-                name: 'ticketStock',
-                component: () =>
-                    import ('@/views/scenic/ticketStock'),
-                meta: { title: '门票存量', icon: 'setting-d' }
-            },
-            {
-                path: 'liveStreaming',
-                name: 'liveStreaming',
-                component: () =>
-                    import ('@/views/scenic/liveStreaming'),
-                meta: { title: '景区直播', icon: 'tree' }
-            },
-        ]
-    },
-    {
+            path: 'scenicManagement',
+            name: 'scenicManagement',
+            component: () =>
+                import ('@/views/scenic/scenicManagement'),
+            meta: {
+                title: '景点管理',
+                icon: 'table'
+            }
+        }, {
+            path: 'ticketManagement',
+            name: 'ticketManagement',
+            component: () =>
+                import ('@/views/scenic/ticketManagement'),
+            meta: {
+                title: '门票管理',
+                icon: 'user'
+            }
+        }, {
+            path: 'scenicOrderManagement',
+            name: 'scenicOrderManagement',
+            component: () =>
+                import ('@/views/scenic/scenicOrderManagement'),
+            meta: {
+                title: '订单管理',
+                icon: 'tree'
+            }
+        }, {
+            path: 'ticketStock',
+            name: 'ticketStock',
+            component: () =>
+                import ('@/views/scenic/ticketStock'),
+            meta: {
+                title: '门票存量',
+                icon: 'setting-d'
+            }
+        }, {
+            path: 'liveStreaming',
+            name: 'liveStreaming',
+            component: () =>
+                import ('@/views/scenic/liveStreaming'),
+            meta: {
+                title: '景区直播',
+                icon: 'tree'
+            }
+        }, ]
+    }, {
         path: '/itinerary',
         component: Layout,
         redirect: '/itinerary/agencyManagement',
         name: 'itinerary',
-        meta: { title: '旅行路线', icon: 'line' },
+        meta: {
+            title: '旅行路线',
+            icon: 'line'
+        },
         children: [{
-                path: 'agencyManagement',
-                name: 'agencyManagement',
-                component: () =>
-                    import ('@/views/itinerary/agencyManagement'),
-                meta: { title: '旅行社管理', icon: 'table' }
-            },
-            {
-                path: 'tourismProduct',
-                name: 'tourismProduct',
-                component: () =>
-                    import ('@/views/itinerary/tourismProduct'),
-                meta: { title: '旅游产品', icon: 'tree' }
-            },
-            {
-                path: 'orderManagement',
-                name: 'orderManagement',
-                component: () =>
-                    import ('@/views/itinerary/orderManagement'),
-                meta: { title: '订单管理', icon: 'tree' }
-            },
-            {
-                path: 'travelBooking',
-                name: 'travelBooking',
-                component: () =>
-                    import ('@/views/itinerary/travelBooking'),
-                meta: { title: '旅行预约', icon: 'tree' }
-            },
-        ]
-    },
-    {
+            path: 'agencyManagement',
+            name: 'agencyManagement',
+            component: () =>
+                import ('@/views/itinerary/agencyManagement'),
+            meta: {
+                title: '旅行社管理',
+                icon: 'table'
+            }
+        }, {
+            path: 'tourismProduct',
+            name: 'tourismProduct',
+            component: () =>
+                import ('@/views/itinerary/tourismProduct'),
+            meta: {
+                title: '旅游产品',
+                icon: 'tree'
+            }
+        }, {
+            path: 'orderManagement',
+            name: 'orderManagement',
+            component: () =>
+                import ('@/views/itinerary/orderManagement'),
+            meta: {
+                title: '订单管理',
+                icon: 'tree'
+            }
+        }, {
+            path: 'travelBooking',
+            name: 'travelBooking',
+            component: () =>
+                import ('@/views/itinerary/travelBooking'),
+            meta: {
+                title: '旅行预约',
+                icon: 'tree'
+            }
+        }, ]
+    }, {
         path: '/hotel',
         component: Layout,
         redirect: '/hotel/hotelManagement',
         name: 'hotel',
-        meta: { title: '民宿酒店', icon: 'hotel' },
+        meta: {
+            title: '民宿酒店',
+            icon: 'hotel'
+        },
         children: [{
-                path: 'hotelManagement',
-                name: 'hotelManagement',
-                component: () =>
-                    import ('@/views/hotel/hotelManagement'),
-                meta: { title: '酒店管理', icon: 'table' }
-            },
-            {
-                path: 'roomManagement',
-                name: 'roomManagement',
-                component: () =>
-                    import ('@/views/hotel/roomManagement'),
-                meta: { title: '房型管理', icon: 'tree' }
-            },
-            {
-                path: 'hotelOrderManagement',
-                name: 'hotelOrderManagement',
-                component: () =>
-                    import ('@/views/hotel/hotelOrderManagement'),
-                meta: { title: '订单管理', icon: 'tree' }
-            },
-            {
-                path: 'bookingManagement',
-                name: 'bookingManagement',
-                component: () =>
-                    import ('@/views/hotel/bookingManagement'),
-                meta: { title: '预约管理', icon: 'tree' }
-            },
-        ]
-    },
-    {
+            path: 'hotelManagement',
+            name: 'hotelManagement',
+            component: () =>
+                import ('@/views/hotel/hotelManagement'),
+            meta: {
+                title: '酒店管理',
+                icon: 'table'
+            }
+        }, {
+            path: 'roomManagement',
+            name: 'roomManagement',
+            component: () =>
+                import ('@/views/hotel/roomManagement'),
+            meta: {
+                title: '房型管理',
+                icon: 'tree'
+            }
+        }, {
+            path: 'hotelOrderManagement',
+            name: 'hotelOrderManagement',
+            component: () =>
+                import ('@/views/hotel/hotelOrderManagement'),
+            meta: {
+                title: '订单管理',
+                icon: 'tree'
+            }
+        }, {
+            path: 'bookingManagement',
+            name: 'bookingManagement',
+            component: () =>
+                import ('@/views/hotel/bookingManagement'),
+            meta: {
+                title: '预约管理',
+                icon: 'tree'
+            }
+        }, ]
+    }, {
         path: '/live',
         component: Layout,
         redirect: '/live/liveManagement',
         name: 'live',
-        meta: { title: '直播', icon: 'tree' },
+        meta: {
+            title: '直播',
+            icon: 'tree'
+        },
         children: [{
             path: 'liveManagement',
             name: 'liveManagement',
             component: () =>
                 import ('@/views/live/liveManagement'),
-            meta: { title: '直播管理', icon: 'restaurant' }
+            meta: {
+                title: '直播管理',
+                icon: 'restaurant'
+            }
         }, ]
-    },
-    {
+    }, {
         path: '/data',
         component: Layout,
         redirect: '/data/dataStatistics',
         name: 'data',
-        meta: { title: '数据统计', icon: 'bill' },
+        meta: {
+            title: '数据统计',
+            icon: 'bill'
+        },
         children: [{
             path: 'dataStatistics',
             name: 'dataStatistics',
             component: () =>
                 import ('@/views/data/dataStatistics'),
-            meta: { title: '数据统计', icon: 'bill' }
+            meta: {
+                title: '数据统计',
+                icon: 'bill'
+            }
         }, ]
     },
     // {
@@ -630,12 +681,18 @@ export const constantRoutes = [{
 
 
     //! 404页面必须放在最后
-    { path: '*', redirect: '/404', hidden: true }
+    {
+        path: '*',
+        redirect: '/404',
+        hidden: true
+    }
 ]
 
 const createRouter = () => new Router({
     // mode: 'history', // require service support
-    scrollBehavior: () => ({ y: 0 }),
+    scrollBehavior: () => ({
+        y: 0
+    }),
     routes: constantRoutes
 })
 
