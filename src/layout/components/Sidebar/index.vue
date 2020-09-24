@@ -31,6 +31,7 @@ export default {
       'sidebar'
     ]),
     routes() {
+      // 获取路由遍历成为左侧目录
       return this.$router.options.routes
     },
     activeMenu() {
